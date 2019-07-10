@@ -10,12 +10,20 @@ class  App extends Component {
     ]
   }
 
-handledelete(id){
-  console.log(id)
-}
- 
+handledelete = (id) =>{
+  const remaintodos = this.state.todos.filter(todo=>{
+    return id !== todo.todoid
+  })
 
-  render() { 
+  this.setState({
+    todos: remaintodos
+  })
+  
+}
+
+
+render() { 
+
     return <React.Fragment>
 
         <h1>Todo-list</h1>
