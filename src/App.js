@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Todolist from './Todolist';
+import Addtodo from './Addtodo'
 
 class  App extends Component {
   state = {
@@ -22,6 +23,18 @@ handledelete = (id) =>{
 }
 
 
+handleAddtodo =(todo)=>{
+  
+   todo.todoid = Math.random();
+   let todos = [ ...this.state.todos, todo ] 
+   console.log(this.state.todos)
+   this.setState({
+     todos:todos
+   })
+
+  console.log(todo)
+}
+
 render() { 
 
     return <React.Fragment>
@@ -29,6 +42,9 @@ render() {
         <h1>Todo-list</h1>
     <div>
         <Todolist todolist={this.state.todos} deletetodo={this.handledelete}/>
+    </div>
+    <div>
+      <Addtodo addtodo={this.handleAddtodo}/>
     </div>
       
     </React.Fragment>
