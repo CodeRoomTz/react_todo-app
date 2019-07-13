@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Todolist from './Todolist';
-import Addtodo from './Addtodo'
+import Todolist from './Component/Todolist';
+import Addtodo from './Component/Addtodo'
 
 class  App extends Component {
   state = {
@@ -11,6 +11,20 @@ class  App extends Component {
     ]
   }
 
+  handleAddtodo =(todo)=>{
+    
+     let todoid = Math.random()
+     let todos ={
+       task: todo,
+       todoid:todoid
+     }
+     let todoitem = [todos, ...this.state.todos ];
+  
+    this.setState({
+      todos: todoitem
+    })
+  
+  }
 handledelete = (id) =>{
   const remaintodos = this.state.todos.filter(todo=>{
     return id !== todo.todoid
@@ -23,28 +37,23 @@ handledelete = (id) =>{
 }
 
 
-handleAddtodo =(todo)=>{
-  
-   todo.todoid = Math.random();
-   let todos = [ ...this.state.todos, todo ] 
-   console.log(this.state.todos)
-   this.setState({
-     todos:todos
-   })
-
-  console.log(todo)
-}
 
 render() { 
-
+     console.log(this.state.todos)
+    //  const tusklist = this.state.todos.map(list =>{
+    //    return(<div key={list.todoid}>
+    //      <span>{list.task}</span>
+    //    </div>);
+    //  })
     return <React.Fragment>
 
         <h1>Todo-list</h1>
     <div>
-        <Todolist todolist={this.state.todos} deletetodo={this.handledelete}/>
+    <Todolist todolist={this.state.todos} deletetodo={this.handledelete}/>
     </div>
     <div>
       <Addtodo addtodo={this.handleAddtodo}/>
+    
     </div>
       
     </React.Fragment>

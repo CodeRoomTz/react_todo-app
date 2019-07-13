@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 
 class Addtodo extends Component {
     state = { 
-
         value:''
      }
 
      handleSubmit =(e)=>{
          e.preventDefault();
-         this.props.addtodo(this.state)
-
+         const task ={
+             value: e.target[0].value
+         }
+         this.props.addtodo(task.value)
          this.setState({
              value: ''
          })
+         
      }
      handleChange=(e)=>{
         this.setState({
