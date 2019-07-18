@@ -39,15 +39,12 @@ handledelete = (id) =>{
 
 
 render() { 
-     console.log(this.state.todos)
-    //  const tusklist = this.state.todos.map(list =>{
-    //    return(<div key={list.todoid}>
-    //      <span>{list.task}</span>
-    //    </div>);
-    //  })
-    return <React.Fragment>
+    
+    console.log(this.state.todos)
+    return <div className="container">
 
-        <h1>Todo-list</h1>
+        <h1 >Todo-list</h1>
+    <div > <button className="btn btn-sm btn-outline-secondary m">Addtodo</button> </div>
     <div>
     <Todolist todolist={this.state.todos} deletetodo={this.handledelete}/>
     </div>
@@ -56,7 +53,7 @@ render() {
     
     </div>
       
-    </React.Fragment>
+    </div>
   }
 }
  
