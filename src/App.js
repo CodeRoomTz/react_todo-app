@@ -1,61 +1,30 @@
-import React, { Component } from 'react';
-import Todolist from './Component/Todolist';
-import Addtodo from './Component/Addtodo'
+import React, { Component } from "react";
+import { BrowserRouter, Route} from 'react-router-dom';
+import About from './Component/About';
+import TodoApp from './Component/TodoApp';
 
-class  App extends Component {
-  state = {
-    todos: [
-      {task:'Learn pythagorous', todoid:1},
-      {task:'running early in morning', todoid:2},
-      {task:'create mashine-learning tutorial', todoid:3}
-    ]
-  }
+class App extends Component {
 
-  handleAddtodo =(todo)=>{
+  render() {
     
-     let todoid = Math.random()
-     let todos ={
-       task: todo,
-       todoid:todoid
-     }
-     let todoitem = [todos, ...this.state.todos ];
-  
-    this.setState({
-      todos: todoitem
-    })
-  
-  }
-handledelete = (id) =>{
-  const remaintodos = this.state.todos.filter(todo=>{
-    return id !== todo.todoid
-  })
+    return (
+    <BrowserRouter>
+      <div className="container">
+        <div className="todo-center">
+          <h1>Todo-list</h1>
+          <ul className="link">
+            <a href="/"><li className="link-item">Todos</li></a>
+            <a href="/about"><li className="link-item">About</li></a>
+          </ul>
+        </div>
+           <TodoApp />
 
-  this.setState({
-    todos: remaintodos
-  })
-  
-}
-
-
-
-render() { 
-    
-    console.log(this.state.todos)
-    return <div className="container">
-
-        <h1 >Todo-list</h1>
-    <div > <button className="btn btn-sm btn-outline-secondary m">Addtodo</button> </div>
-    <div>
-    <Todolist todolist={this.state.todos} deletetodo={this.handledelete}/>
-    </div>
-    <div>
-      <Addtodo addtodo={this.handleAddtodo}/>
-    
-    </div>
-      
-    </div>
+           <Route path='/' Component={TodoApp}/>
+           <Route path='/about' Component={About}/>
+        </div>
+    </BrowserRouter>
+    );
   }
 }
- 
+
 export default App;
-
