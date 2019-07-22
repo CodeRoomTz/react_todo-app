@@ -3,16 +3,16 @@
   display: flex;
   padding-left: 450px;
   padding-top: 10px;
+  text-decoration: none;
 }
 
 .link-item{
   font-family: 'source code pro';
   margin: 0px 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 5px;
   text-align: center;
   width: 100px;
-  text-decoration: none;
 }
 
 .card{
@@ -22,6 +22,8 @@
 
 .todo-center{
   text-align: center;
+  font-family: 'source code pro';
+  font-weight: 500;
 }
 
 .todo-form{
@@ -41,5 +43,10 @@
   font-family: 'source code pro';
   font-size: 16px;
   font-weight: 300px;
-  
+}
+
+.active{
+  background-color: grey;
+  border-color: rgb(67, 143, 120);
+  color: rgb(0, 0, 0);
 }

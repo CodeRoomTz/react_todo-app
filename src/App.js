@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route,  NavLink } from 'react-router-dom';
 import About from './Component/About';
 import TodoApp from './Component/TodoApp';
 
@@ -13,14 +13,13 @@ class App extends Component {
         <div className="todo-center">
           <h1>Todo-list</h1>
           <ul className="link">
-            <a href="/"><li className="link-item">Todos</li></a>
-            <a href="/about"><li className="link-item">About</li></a>
+            <NavLink to="/"><li className="link-item">Todos</li></NavLink>
+            <NavLink to="/about"><li className="link-item">About</li></NavLink>
           </ul>
-        </div>
-           <TodoApp />
-
-           <Route path='/' Component={TodoApp}/>
-           <Route path='/about' Component={About}/>
+        </div> 
+        
+           <Route exact path='/' component={TodoApp}/>
+           <Route path='/about' component={About}/>
         </div>
     </BrowserRouter>
     );
