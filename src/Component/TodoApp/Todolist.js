@@ -1,42 +1,34 @@
 import React, { Component } from "react";
-import Axios from "axios";
+import {Link} from 'react-router-dom'
 
 class Todolist extends Component {
-  state = {
-    todos: []
-  };
-  componentDidMount() {
-    Axios.get("https://jsonplaceholder.typicode.com/todos").then(res => {
-      console.log(res);
-      this.setState({
-        todos: res.data.slice(0, 5)
-      });
-    });
-  }
+
   render() {
-    const { todos } = this.state;
-    const todoContent = todos.length ? (
-      todos.map(todos => {
+    console.log(this.props)
+    
+    const todoContent = this.props.todolist.map(todos => {
         return (
-          <div className="card-body" key={todos.id}>
+          <div className="card-body" key={todos.todoid}>
             <div>
               {" "}
+              <Link to={'/' + todos.todoid}>
               <h6
                 onClick={() => {
                   this.props.deletetodo(todos.todoid);
                 }}
                 className="alert alert-secondary todo-center"
               >
-                {todos.title}
+                {todos.task}
                 <span className="badge badge-secondary">New</span>
               </h6>
+              </Link>
             </div>
           </div>
         );
       })
-    ) : (
-      <h3>No todo, please add on todo-box below</h3>
-    );
+    // ) : (
+    //   <h3>No todo, please add on todo-box below</h3>
+    // );
     return <div className="card">{todoContent}</div>;
   }
 }

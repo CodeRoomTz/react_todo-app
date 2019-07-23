@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route,  NavLink } from 'react-router-dom';
+import { BrowserRouter, Route,  Switch} from 'react-router-dom';
 import About from './Component/About';
 import TodoApp from './Component/TodoApp';
+import Todo from './Component/Todo'
+import Navbar from './Component/Navbar'
 
 class App extends Component {
 
@@ -10,16 +12,12 @@ class App extends Component {
     return (
     <BrowserRouter>
       <div className="container">
-        <div className="todo-center">
-          <h1>Todo-list</h1>
-          <ul className="link">
-            <NavLink to="/"><li className="link-item">Todos</li></NavLink>
-            <NavLink to="/about"><li className="link-item">About</li></NavLink>
-          </ul>
-        </div> 
-        
+         <Navbar />
+          <Switch>
            <Route exact path='/' component={TodoApp}/>
            <Route path='/about' component={About}/>
+           <Route path='/:todo_id' component ={Todo} />
+          </Switch>
         </div>
     </BrowserRouter>
     );
